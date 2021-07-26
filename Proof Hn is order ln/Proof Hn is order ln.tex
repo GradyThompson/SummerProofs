@@ -1,0 +1,86 @@
+\documentclass{report}
+
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{titlepage}
+   \vspace*{\stretch{1.0}}
+   \begin{center}
+      \Large\textbf{Proof Hn is order ln}\\
+      \large\textit{Grady Thompson}
+   \end{center}
+   \vspace*{\stretch{2.0}}
+\end{titlepage}
+
+Statement 0\\
+$$H_n = \sum_{x=1}^{n}\frac{1}{x}$$
+
+Statement 1\\
+{\center
+	Suppose $0 < n$ and $0 \leq x \leq 1$\par
+}
+$$=0 \leq x$$
+$$=n \leq n + x$$
+$$=1 \leq \frac{n + x}{n}$$
+$$=\frac{1}{n + x} \leq \frac{1}{n}$$
+
+Statement 2\\
+{\center
+	Suppose $n \in \mathbb{Z}_{>0}$\par
+}
+$$\int_n^{n+1}\frac{1}{x} = \lim_{\delta x \rightarrow 0}\sum_{x=n}^{n+1}\frac{1}{x}\delta x$$
+{\center
+	Using statement 1: $\frac{1}{n + x} \leq \frac{1}{n} \forall x,n: 0 < n, 0 \leq x \leq 1$\par
+}
+$$\lim_{\delta x \rightarrow 0}\sum_{x=n}^{n+1}\frac{1}{x}\delta x \leq \frac{1}{n}$$
+$$\int_n^{n+1}\frac{1}{x} \leq \frac{1}{n}$$
+
+Statement 3\\
+{\center
+	Using statement 2: $\int_n^{n+1}\frac{1}{x} \leq \frac{1}{n} \forall n \in \mathbb{Z}_{>0}$ (n is replaced by n' in the following equations)\par
+}
+$$\sum_{n'=1}^{n}\int_{n'}^{n'+1}\frac{1}{x} \leq \sum_{n'=1}^{n}\frac{1}{n'}$$
+$$\int_{1}^{n+1}\frac{1}{x} \leq \sum_{n'=1}^{n}\frac{1}{n'} = H_n$$
+$$\int_{1}^{n+1}\frac{1}{x} = \ln(x)|_1^{n+1} = \ln(n+1) - \ln(1) = \ln(n+1) \in \Theta(ln(n))$$
+$$\ln(n+1) \leq H_n$$
+$$H_n \in \Omega(ln(n))$$
+
+Statement 4\\
+{\center
+	Suppose $1 < n$ and $0 \leq x \leq 1$\par
+}
+$$=0 \geq -x$$
+$$=n \geq n - x$$
+$$=1 \geq \frac{n - x}{n}$$
+$$=\frac{1}{n - x} \geq \frac{1}{n}$$
+
+Statement 5\\
+{\center
+	Suppose $n \in \mathbb{Z}_{>1}$\par
+}
+$$\int_n^{n+1}\frac{1}{x} = \lim_{\delta x \rightarrow 0}\sum_{x=n}^{n+1}\frac{1}{x}\delta x$$
+{\center
+	Using statement 4: $\frac{1}{n - x} \geq \frac{1}{n} \forall x,n: 1 < n, 0 \leq x \leq 1$\par
+}
+$$\lim_{\delta x \rightarrow 0}\sum_{x=n-1}^{n}\frac{1}{x}\delta x \geq \frac{1}{n}$$
+$$\int_{n-1}^{n}\frac{1}{x} \geq \frac{1}{n}$$
+
+Statement 6\\
+{\center
+	Using statement 5: $\int_{n-1}^{n}\frac{1}{x} \geq \frac{1}{n} \forall n \in \mathbb{Z}_{>1}$ (n is replaced by n' in the following equations)\par
+}
+$$\sum_{n'=2}^{n}\int_{n'-1}^{n'}\frac{1}{x} \geq \sum_{n'=2}^{n}\frac{1}{n'}$$
+$$\int_{1}^{n}\frac{1}{x} \geq \sum_{n'=1}^{n}\frac{1}{n'} = H_n - 1$$
+$$\int_{1}^{n}\frac{1}{x} = \ln(x)|_1^{n} = \ln(n) - \ln(1) = \ln(n)$$
+$$\ln(n) \geq H_n - 1$$
+$$\ln(n) + 1 \geq H_n$$
+$$\ln(n) + 1 \in \Theta(ln(n))$$
+$$H_n \in O(ln(n))$$
+
+
+Statement 7\\
+{\center
+Using Statement 3: $H_n \in Omega(ln(n))$ and Statement 6: $H_n \in O(ln(n))$, by defenition $H_n \in \Theta(ln(n))$\par
+}
+\end{document}
